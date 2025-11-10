@@ -9,13 +9,14 @@ export async function GET(req: NextRequest) {
     <meta property="fc:frame" content="vNext" />
     <meta property="fc:frame:image" content="${SITE_URL}/api/images/landing" />
     <meta property="fc:frame:image:aspect_ratio" content="1:1" />
-    <meta property="fc:frame:button:1" content="Reveal" />
-    <meta property="fc:frame:post_url" content="${SITE_URL}/api/input" />
-    <title>Numerology Frame</title>
+    <meta property="fc:frame:button:1" content="Launch App" />
+    <meta property="fc:frame:button:1:action" content="link" />
+    <meta property="fc:frame:button:1:target" content="${SITE_URL}" />
+    <title>Numerology Mini App</title>
   </head>
   <body>
-    <h1>Numerology Frame</h1>
-    <p>This is a Farcaster Frame. View it on Warpcast!</p>
+    <h1>Numerology Mini App</h1>
+    <p>Click "Launch App" to open the numerology mini app!</p>
   </body>
 </html>`;
 
