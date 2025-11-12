@@ -7,16 +7,17 @@ export async function GET(req: NextRequest) {
 <html>
   <head>
     <meta property="fc:frame" content="vNext" />
-    <meta property="fc:frame:image" content="${SITE_URL}/api/images/landing" />
+    <meta property="fc:frame:image" content="${SITE_URL}/api/images/input" />
     <meta property="fc:frame:image:aspect_ratio" content="1:1" />
-    <meta property="fc:frame:button:1" content="Launch App" />
-    <meta property="fc:frame:button:1:action" content="link" />
-    <meta property="fc:frame:button:1:target" content="${SITE_URL}" />
-    <title>Numerology Mini App</title>
+    <meta property="fc:frame:input:text" content="Enter birth date (YYYY-MM-DD)" />
+    <meta property="fc:frame:button:1" content="Calculate Numbers" />
+    <meta property="fc:frame:button:1:action" content="post" />
+    <meta property="fc:frame:post_url" content="${SITE_URL}/api/frames" />
+    <title>Numerology Calculator</title>
   </head>
   <body>
-    <h1>Numerology Mini App</h1>
-    <p>Click "Launch App" to open the numerology mini app!</p>
+    <h1>Numerology Calculator</h1>
+    <p>Enter your birth date to discover your numbers!</p>
   </body>
 </html>`;
 
@@ -26,5 +27,39 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  return GET(req);
+  try {
+    const body = await req.json();
+    const birthDate = body.untrustedData?.inputText || '';
+
+    // Validate date format
+    if (!birthDate || !/^\d{4}-\d{2}-\d{2}$/.test(birthDate)) {
+      // Return to input screen if invalid
+      return GET(req);
+    }
+
+    // Return results frame
+    const html = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta property="fc:frame" content="vNext" />
+    <meta property="fc:frame:image" content="${SITE_URL}/api/images/results?dob=${encodeURIComponent(birthDate)}" />
+    <meta property="fc:frame:image:aspect_ratio" content="1:1" />
+    <meta property="fc:frame:button:1" content="Calculate Again" />
+    <meta property="fc:frame:button:1:action" content="post" />
+    <meta property="fc:frame:post_url" content="${SITE_URL}/api/frames/reset" />
+    <title>Your Numerology Results</title>
+  </head>
+  <body>
+    <h1>Your Numerology Results</h1>
+    <p>Birth Date: ${birthDate}</p>
+  </body>
+</html>`;
+
+    return new NextResponse(html, {
+      headers: { 'Content-Type': 'text/html' },
+    });
+  } catch (error) {
+    console.error('Error processing frame POST:', error);
+    return GET(req);
+  }
 }

@@ -1,27 +1,28 @@
 import { ImageResponse } from 'next/og';
 import { NextRequest } from 'next/server';
-import { calculateLifePath, getNumerologyInsights } from '@/app/lib/numerology';
+import { calculateMulank, calculateDestinyNumber, getNumerologyInsights } from '@/app/lib/numerology';
 
 export const runtime = 'edge';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const dob = searchParams.get('dob') || '';
-  
-  let lifePath = 1;
-  let insights = getNumerologyInsights(1);
-  
+
+  let mulank = 1;
+  let destinyNumber = 1;
+  let mulankInsights = getNumerologyInsights(1);
+  let destinyInsights = getNumerologyInsights(1);
+
   if (dob) {
     try {
-      lifePath = calculateLifePath(dob);
-      insights = getNumerologyInsights(lifePath);
+      mulank = calculateMulank(dob);
+      destinyNumber = calculateDestinyNumber(dob);
+      mulankInsights = getNumerologyInsights(mulank);
+      destinyInsights = getNumerologyInsights(destinyNumber);
     } catch (error) {
       console.error('Error:', error);
     }
   }
-  
-  const destiny = (lifePath + 3) % 9 || 9;
-  const soul = (lifePath + destiny) % 9 || 9;
 
   return new ImageResponse(
     (
@@ -54,7 +55,7 @@ export async function GET(req: NextRequest) {
               lineHeight: 1.2,
             }}
           >
-            Your Cosmic
+            Your Numerology
             <br />
             Numbers
           </h1>
@@ -73,7 +74,7 @@ export async function GET(req: NextRequest) {
             justifyContent: 'center',
           }}
         >
-          {/* Life Path Card */}
+          {/* Mulank Card */}
           <div
             style={{
               border: '2px solid rgba(255,255,255,0.3)',
@@ -85,14 +86,14 @@ export async function GET(req: NextRequest) {
               gap: '12px',
             }}
           >
-            <div style={{ fontSize: '28px', display: 'flex' }}>
-              • Life Path: {lifePath}
+            <div style={{ fontSize: '32px', display: 'flex', fontWeight: 'bold' }}>
+              Mulank (Root): {mulank}
             </div>
             <div style={{ fontSize: '22px', opacity: 0.8, display: 'flex', fontWeight: 'bold' }}>
-              {insights.title}
+              {mulankInsights.title}
             </div>
             <div style={{ fontSize: '18px', opacity: 0.6, display: 'flex' }}>
-              {insights.desc}
+              {mulankInsights.desc}
             </div>
           </div>
 
@@ -108,31 +109,14 @@ export async function GET(req: NextRequest) {
               gap: '12px',
             }}
           >
-            <div style={{ fontSize: '28px', display: 'flex' }}>
-              • Destiny: {destiny}
+            <div style={{ fontSize: '32px', display: 'flex', fontWeight: 'bold' }}>
+              Destiny Number: {destinyNumber}
             </div>
-            <div style={{ fontSize: '22px', opacity: 0.7, display: 'flex' }}>
-              Your Life Purpose
+            <div style={{ fontSize: '22px', opacity: 0.8, display: 'flex', fontWeight: 'bold' }}>
+              {destinyInsights.title}
             </div>
-          </div>
-
-          {/* Soul Card */}
-          <div
-            style={{
-              border: '2px solid rgba(255,255,255,0.3)',
-              borderRadius: '24px',
-              padding: '35px',
-              background: 'rgba(255,255,255,0.05)',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '12px',
-            }}
-          >
-            <div style={{ fontSize: '28px', display: 'flex' }}>
-              • Soul Urge: {soul}
-            </div>
-            <div style={{ fontSize: '22px', opacity: 0.7, display: 'flex' }}>
-              Inner Desires
+            <div style={{ fontSize: '18px', opacity: 0.6, display: 'flex' }}>
+              {destinyInsights.desc}
             </div>
           </div>
         </div>

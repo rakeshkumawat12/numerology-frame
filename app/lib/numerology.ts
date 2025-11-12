@@ -1,11 +1,24 @@
-export function calculateLifePath(dateStr: string): number {
+// Mulank (Root Number) - Based on birth date day only
+export function calculateMulank(dateStr: string): number {
+  const date = new Date(dateStr);
+  const day = date.getDate();
+  return reduceToSingle(day);
+}
+
+// Destiny Number (Life Path) - Based on complete birth date
+export function calculateDestinyNumber(dateStr: string): number {
   const date = new Date(dateStr);
   const day = date.getDate();
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
-  
+
   const sum = reduceToSingle(day) + reduceToSingle(month) + reduceToSingle(year);
   return reduceToSingle(sum);
+}
+
+// Keep for backward compatibility
+export function calculateLifePath(dateStr: string): number {
+  return calculateDestinyNumber(dateStr);
 }
 
 export function reduceToSingle(num: number): number {
