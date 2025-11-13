@@ -1,26 +1,151 @@
 @import "tailwindcss";
 
+/* Nohemi Font Family */
+@font-face {
+  font-family: 'Nohemi';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url('/fonts/Nohemi-Thin.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('/fonts/Nohemi-ExtraLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/Nohemi-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Nohemi-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/Nohemi-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/Nohemi-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Nohemi-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/Nohemi-ExtraBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/Nohemi-Black.ttf') format('truetype');
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Dark mystical color palette */
+  --background: #0a0a0f;
+  --background-secondary: #12121a;
+  --background-tertiary: #1a1a2e;
+  --foreground: #e8e8f0;
+
+  /* Mystical accent colors */
+  --gold: #d4af37;
+  --gold-light: #f0d898;
+  --silver: #c0c0d8;
+  --deep-blue: #1e3a8a;
+  --mystic-purple: #6b4ac7;
+  --cosmic-violet: #8b5cf6;
+
+  /* Glow effects */
+  --glow-gold: rgba(212, 175, 55, 0.3);
+  --glow-silver: rgba(192, 192, 216, 0.2);
+  --glow-blue: rgba(30, 58, 138, 0.4);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-nohemi: 'Nohemi', sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-nohemi);
+  overflow-x: hidden;
+}
+
+/* Mystical glow effect utility */
+.glow-gold {
+  box-shadow: 0 0 20px var(--glow-gold), 0 0 40px var(--glow-gold);
+}
+
+.glow-silver {
+  box-shadow: 0 0 15px var(--glow-silver), 0 0 30px var(--glow-silver);
+}
+
+.glow-blue {
+  box-shadow: 0 0 25px var(--glow-blue), 0 0 50px var(--glow-blue);
+}
+
+/* Smooth transitions */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Sacred geometry patterns */
+.sacred-pattern {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-light);
 }
