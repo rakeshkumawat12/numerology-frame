@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import sdk from '@farcaster/frame-sdk';
-import { calculateMulank, calculateDestinyNumber, getNumerologyInsights } from '@/app/lib/numerology';
+import { calculateMulank, calculateDestinyNumber } from '@/app/lib/numerology';
 import PersonalityTraitsData from '@/app/data/PersonalityTraitsData';
 import ComboMulankDestiny from '@/app/data/ComboMulankDestiny';
 import {
@@ -13,7 +13,6 @@ import {
   getVisionPlaneQualities,
   getWillPlaneQualities,
   getActionPlaneQualities,
-  getRajyog,
 } from '@/app/utils/LoShu';
 import Image from 'next/image';
 import { HoverBorderGradient } from '@/app/components/ui/hover-border-gradient';
@@ -31,11 +30,10 @@ export default function NumerologyApp() {
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
   const [stage, setStage] = useState<Stage>('landing');
   const [birthDate, setBirthDate] = useState('');
+  const [username, setUsername] = useState<string>('');
   const [results, setResults] = useState<{
     mulank: number;
     destinyNumber: number;
-    mulankInsights: any;
-    destinyInsights: any;
     day: number;
     personality: PersonalityTraits | undefined;
   } | null>(null);
@@ -43,7 +41,12 @@ export default function NumerologyApp() {
   useEffect(() => {
     const load = async () => {
       // Initialize the SDK
-      await sdk.context;
+      const context = await sdk.context;
+
+      // Get username from context
+      if (context?.user?.username) {
+        setUsername(context.user.username);
+      }
 
       // Signal to Farcaster that the app is ready
       sdk.actions.ready();
@@ -61,8 +64,6 @@ export default function NumerologyApp() {
     try {
       const mulank = calculateMulank(birthDate);
       const destinyNumber = calculateDestinyNumber(birthDate);
-      const mulankInsights = getNumerologyInsights(mulank);
-      const destinyInsights = getNumerologyInsights(destinyNumber);
 
       // Extract day from birth date
       const date = new Date(birthDate);
@@ -76,8 +77,6 @@ export default function NumerologyApp() {
       setResults({
         mulank,
         destinyNumber,
-        mulankInsights,
-        destinyInsights,
         day,
         personality,
       });
@@ -177,9 +176,11 @@ export default function NumerologyApp() {
           </HoverBorderGradient>
 
           {/* Bottom ornament */}
-          <p className="text-[#c0c0d8]/60 text-sm tracking-widest uppercase">
-            Ancient Wisdom · Modern Insight
-          </p>
+          {username && (
+            <p className="text-[#c0c0d8]/60 text-sm tracking-widest">
+              @{username}
+            </p>
+          )}
         </div>
       </div>
     );
@@ -290,46 +291,6 @@ export default function NumerologyApp() {
           </p>
 
           <div className="space-y-6">
-            {/* Mulank Card */}
-            <div className="relative bg-[#1a1a2e]/80 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-[#d4af37]/40 glow-gold overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#d4af37]/5 rounded-full blur-3xl" />
-              <div className="relative">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <p className="text-[#d4af37]/70 text-xs uppercase tracking-widest mb-1">Root Number</p>
-                    <h2 className="text-2xl md:text-3xl font-bold text-[#d4af37]">Mulank</h2>
-                  </div>
-                  <div className="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#d4af37] bg-[#d4af37]/10 glow-gold">
-                    <span className="text-3xl md:text-4xl font-bold text-[#d4af37]">{results?.mulank}</span>
-                  </div>
-                </div>
-                <h3 className="text-lg md:text-xl font-semibold text-[#e8e8f0] mb-3">
-                  {results?.mulankInsights.title}
-                </h3>
-                <p className="text-[#c0c0d8]/80 text-sm md:text-base leading-relaxed">{results?.mulankInsights.desc}</p>
-              </div>
-            </div>
-
-            {/* Destiny Number Card */}
-            <div className="relative bg-[#1a1a2e]/80 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-[#c0c0d8]/40 glow-silver overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#c0c0d8]/5 rounded-full blur-3xl" />
-              <div className="relative">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <p className="text-[#c0c0d8]/70 text-xs uppercase tracking-widest mb-1">Life Path</p>
-                    <h2 className="text-2xl md:text-3xl font-bold text-[#c0c0d8]">Destiny Number</h2>
-                  </div>
-                  <div className="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#c0c0d8] bg-[#c0c0d8]/10 glow-silver">
-                    <span className="text-3xl md:text-4xl font-bold text-[#c0c0d8]">{results?.destinyNumber}</span>
-                  </div>
-                </div>
-                <h3 className="text-lg md:text-xl font-semibold text-[#e8e8f0] mb-3">
-                  {results?.destinyInsights.title}
-                </h3>
-                <p className="text-[#c0c0d8]/80 text-sm md:text-base leading-relaxed">{results?.destinyInsights.desc}</p>
-              </div>
-            </div>
-
             {/* Personality Traits Card */}
             {results?.personality && (
               <div className="relative bg-[#1a1a2e]/80 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-[#8b5cf6]/40 overflow-hidden">
@@ -367,7 +328,6 @@ export default function NumerologyApp() {
             {/* Numeroscope Section */}
             {results && (() => {
               const displayGrid = insertIntoGrid(birthDate, results.mulank, results.destinyNumber);
-              const rajyog = getRajyog(displayGrid);
               const mindPlaneQualities = getMindPlaneQualities(displayGrid);
               const heartPlaneQualities = getHeartPlaneQualities(displayGrid);
               const practicalPlaneQualities = getPracticalPlaneQualities(displayGrid);
@@ -410,7 +370,7 @@ export default function NumerologyApp() {
                                 <div
                                   key={colIndex}
                                   className="border border-[#d4af37]/40 w-14 h-14 md:w-20 md:h-20 flex items-center justify-center text-[#d4af37] bg-[#12121a]/50 text-2xl md:text-3xl font-bold"
-                                 
+
                                 >
                                   {cell ?? ""}
                                 </div>
@@ -418,14 +378,6 @@ export default function NumerologyApp() {
                             </div>
                           ))}
                         </div>
-                      </div>
-
-                      {/* Rajyog */}
-                      <div className="bg-[#0a0a0f]/60 rounded-xl p-5 border border-[#d4af37]/30">
-                        <h3 className="text-lg font-semibold text-[#d4af37] mb-3 flex items-center gap-2">
-                          <span>✦</span> Rajyog - Combination of Success
-                        </h3>
-                        <p className="text-[#c0c0d8]/80 text-sm md:text-base leading-relaxed">{rajyog}</p>
                       </div>
                     </div>
                   </div>
