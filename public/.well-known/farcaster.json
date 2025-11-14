@@ -1,0 +1,28 @@
+{
+  "frame": {
+    "name": "Numerology",
+    "version": "1",
+    "iconUrl": "https://numerology-frame.vercel.app/numerology-frame.png",
+    "homeUrl": "https://numerology-frame.vercel.app",
+    "imageUrl": "https://numerology-frame.vercel.app/preview.png",
+    "buttonTitle": "Reveal",
+    "splashImageUrl": "https://numerology-frame.vercel.app/preview.png",
+    "splashBackgroundColor": "#0000f0",
+    "webhookUrl": "https://numerology-frame.vercel.app/api/webhook",
+    "subtitle": "Secret Language of Your Birth Date",
+    "description": "Unlock your life’s blueprint with modern numerology.",
+    "primaryCategory": "productivity",
+    "screenshotUrls": [
+      "https://numerology-frame.vercel.app/screenshot.png"
+    ],
+    "heroImageUrl": "https://numerology-frame.vercel.app/preview.png",
+    "tags": [
+      "numerology",
+      "astrology"
+    ],
+    "ogTitle": "Numerology - Get insights",
+    "ogDescription": "Unlock your life’s blueprint with modern numerology.",
+    "tagline": "get your numerology report",
+    "ogImageUrl": "https://numerology-frame.vercel.app/numerology-frame.png"
+  }
+}
