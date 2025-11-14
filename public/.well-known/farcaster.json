@@ -9,7 +9,7 @@
     "splashImageUrl": "https://numerology-frame.vercel.app/preview.png",
     "splashBackgroundColor": "#0000f0",
     "webhookUrl": "https://numerology-frame.vercel.app/api/webhook",
-    "subtitle": "Secret Language of Your Birth Date",
+    "subtitle": "get report",
     "description": "Unlock your life’s blueprint with modern numerology.",
     "primaryCategory": "productivity",
     "screenshotUrls": [
