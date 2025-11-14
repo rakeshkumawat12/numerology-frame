@@ -24,5 +24,11 @@
     "ogDescription": "Unlock your life’s blueprint with modern numerology.",
     "tagline": "get your numerology report",
     "ogImageUrl": "https://numerology-frame.vercel.app/numerology-frame.png"
+  },
+  "accountAssociation": {
+    "header": "eyJmaWQiOjE0NTAxNTksInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHhjYUI4OGFlQWJhYjg5MjZBRkU2RTUxNjJiMDgzNjQ3QzJjRWQ5YjcwIn0",
+    "payload": "eyJkb21haW4iOiJudW1lcm9sb2d5LWZyYW1lLnZlcmNlbC5hcHAifQ",
+    "signature": "VZeknvHhHuOIgggtKotS5Mb8eHFkEmEGIFGByh2w8Es9FL9b3GjyzHgi+sq/TBH6qcfL06z5wX53DtAP+Q4LRBw="
   }
 }
+
