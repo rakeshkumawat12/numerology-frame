@@ -272,7 +272,7 @@ const PersonalityTraitsData = [
   },
   {
     bornOnDates: [7, 16, 25],
-    traits: ["curious", "Confused", "Intuition is good"],
+    traits: ["Curious", "Confused", "Intuition is good"],
     remedy: " Daily Meditation, Wear White Cat's eye Bracelet.",
     samePersonalities: [
       {

@@ -328,8 +328,8 @@ export default function NumerologyApp() {
 
                   <div className="space-y-3 mb-6">
                     {results.personality.traits.map((trait, index) => (
-                      <div key={index} className="flex items-start gap-3 text-[#e8e8f0]">
-                        <span className="text-[#d4af37] mt-1 text-lg">✦</span>
+                      <div key={index} className="flex items-center  gap-3 text-[#e8e8f0]">
+                        <span className="text-[#d4af37] text-lg">✦</span>
                         <span className="text-sm md:text-base leading-relaxed">{trait}</span>
                       </div>
                     ))}
@@ -356,12 +356,12 @@ export default function NumerologyApp() {
               const actionPlaneQualities = getActionPlaneQualities(displayGrid);
 
               const planes = [
-                { title: "Mind Plane Qualities", qualities: mindPlaneQualities, color: "cyan" },
-                { title: "Heart Plane Qualities", qualities: heartPlaneQualities, color: "emerald" },
-                { title: "Practical Plane Qualities", qualities: practicalPlaneQualities, color: "amber" },
-                { title: "Vision Plane Qualities", qualities: visionPlaneQualities, color: "violet" },
-                { title: "Will Plane Qualities", qualities: willPlaneQualities, color: "rose" },
-                { title: "Action Plane Qualities", qualities: actionPlaneQualities, color: "blue" },
+                { title: "Mind Qualities", qualities: mindPlaneQualities, color: "cyan" },
+                { title: "Heart Qualities", qualities: heartPlaneQualities, color: "emerald" },
+                { title: "Practical Qualities", qualities: practicalPlaneQualities, color: "amber" },
+                { title: "Vision Qualities", qualities: visionPlaneQualities, color: "violet" },
+                { title: "Will Qualities", qualities: willPlaneQualities, color: "rose" },
+                { title: "Action Qualities", qualities: actionPlaneQualities, color: "blue" },
               ];
 
               return (
@@ -378,7 +378,7 @@ export default function NumerologyApp() {
                           </h2>
                           <span className="text-[#d4af37] text-xl">✧</span>
                         </div>
-                        <p className="text-[#c0c0d8]/60 text-sm tracking-wide">Ancient Chinese Numerology System</p>
+                        <p className="text-[#c0c0d8]/60 text-sm tracking-wide">Ancient Indian Numerology System</p>
                       </div>
 
                       {/* Lo Shu Grid */}
@@ -428,8 +428,8 @@ export default function NumerologyApp() {
                           </h3>
                           <div className="space-y-3">
                             {plane.qualities.map((quality, qIdx) => (
-                              <div key={qIdx} className="flex items-start gap-3 text-[#e8e8f0]">
-                                <span className="mt-1 text-base" style={{ color: colors.accent }}>✧</span>
+                              <div key={qIdx} className="flex items-center gap-3 text-[#e8e8f0]">
+                                <span className=" text-base" style={{ color: colors.accent }}>✧</span>
                                 <span className="text-sm md:text-base leading-relaxed">{quality}</span>
                               </div>
                             ))}

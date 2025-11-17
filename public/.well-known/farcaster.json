@@ -6,24 +6,24 @@
     "homeUrl": "https://numerology-frame.vercel.app",
     "imageUrl": "https://numerology-frame.vercel.app/preview.png",
     "buttonTitle": "Reveal",
-    "splashImageUrl": "https://numerology-frame.vercel.app/preview.png",
-    "splashBackgroundColor": "#0000f0",
+    "splashImageUrl": "https://numerology-frame.vercel.app/signcircle.png",
+    "splashBackgroundColor": "#0A0A10",
     "webhookUrl": "https://numerology-frame.vercel.app/api/webhook",
-    "subtitle": "get report",
-    "description": "Unlock your life’s blueprint with modern numerology.",
+    "subtitle": "Reveal Your's",
+    "description": "Unlock your life’s blueprint with ancient numerology.",
     "primaryCategory": "productivity",
     "screenshotUrls": [
       "https://numerology-frame.vercel.app/screenshot.png"
     ],
-    "heroImageUrl": "https://numerology-frame.vercel.app/preview.png",
+    "heroImageUrl": "https://numerology-frame.vercel.app/heroImageUrl.png",
     "tags": [
       "numerology",
       "astrology"
     ],
     "ogTitle": "Numerology - Get insights",
-    "ogDescription": "Unlock your life’s blueprint with modern numerology.",
-    "tagline": "get your numerology report",
-    "ogImageUrl": "https://numerology-frame.vercel.app/numerology-frame.png"
+    "ogDescription": "Unlock your life’s blueprint with ancient numerology.",
+    "tagline": "Get your free numerology report.",
+    "ogImageUrl": "https://numerology-frame.vercel.app/heroImageUrl.png"
   },
   "accountAssociation": {
     "header": "eyJmaWQiOjE0NTAxNTksInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHhjYUI4OGFlQWJhYjg5MjZBRkU2RTUxNjJiMDgzNjQ3QzJjRWQ5YjcwIn0",
