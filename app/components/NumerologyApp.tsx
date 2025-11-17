@@ -318,11 +318,7 @@ export default function NumerologyApp() {
                 <div className="relative">
                   <div className="flex items-start justify-between mb-6">
                     <div>
-                      <p className="text-[#8b5cf6]/70 text-xs uppercase tracking-widest mb-1">Born on Day</p>
                       <h2 className="text-2xl md:text-3xl font-bold text-[#8b5cf6]">Personality Traits</h2>
-                    </div>
-                    <div className="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#8b5cf6] bg-[#8b5cf6]/10">
-                      <span className="text-3xl md:text-4xl font-bold text-[#8b5cf6]">{results.day}</span>
                     </div>
                   </div>
 
