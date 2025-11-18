@@ -251,7 +251,7 @@ export default function NumerologyApp() {
                   id="birthDate"
                   value={birthDate}
                   onChange={(e) => setBirthDate(e.target.value)}
-                  className="w-full px-3 md:px-6 py-3 md:py-4 bg-[#0a0a0f]/60 border border-[#d4af37]/30 rounded-xl focus:outline-none focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37]/50 transition-all text-[#e8e8f0] text-base md:text-lg placeholder-[#c0c0d8]/30 backdrop-blur"
+                  className="w-full max-w-full px-3 md:px-6 py-3 md:py-4 bg-[#0a0a0f]/60 border border-[#d4af37]/30 rounded-xl focus:outline-none focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37]/50 transition-all text-[#e8e8f0] text-base md:text-lg placeholder-[#c0c0d8]/30 backdrop-blur"
                   style={{ colorScheme: 'dark' }}
                 />
               </div>
