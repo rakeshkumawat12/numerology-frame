@@ -223,9 +223,9 @@ export default function NumerologyApp() {
         <div className="absolute bottom-32 left-40 text-[#d4af37]/30 text-3xl">✦</div>
         <div className="absolute bottom-20 right-24 text-[#c0c0d8]/35 text-3xl font-serif">✧</div>
 
-        <div className="relative z-10 w-full max-w-md">
+        <div className="relative z-10 w-full max-w-md px-4">
           {/* Card with elegant border */}
-          <div className="relative bg-[#12121a]/80 backdrop-blur-xl rounded-2xl shadow-2xl p-10 border border-[#d4af37]/30 glow-gold">
+          <div className="relative bg-[#12121a]/80 backdrop-blur-xl rounded-2xl shadow-2xl p-6 md:p-10 border border-[#d4af37]/30 glow-gold">
             {/* Top ornament */}
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
               <div className="bg-[#12121a] px-4 py-1 rounded-full border border-[#d4af37]/40">
@@ -251,7 +251,7 @@ export default function NumerologyApp() {
                   id="birthDate"
                   value={birthDate}
                   onChange={(e) => setBirthDate(e.target.value)}
-                  className="w-full px-6 py-4 bg-[#0a0a0f]/60 border border-[#d4af37]/30 rounded-xl focus:outline-none focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37]/50 transition-all text-[#e8e8f0] text-lg placeholder-[#c0c0d8]/30 backdrop-blur"
+                  className="w-full px-3 md:px-6 py-3 md:py-4 bg-[#0a0a0f]/60 border border-[#d4af37]/30 rounded-xl focus:outline-none focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37]/50 transition-all text-[#e8e8f0] text-base md:text-lg placeholder-[#c0c0d8]/30 backdrop-blur"
                   style={{ colorScheme: 'dark' }}
                 />
               </div>
@@ -362,42 +362,6 @@ export default function NumerologyApp() {
 
               return (
                 <div className="space-y-6">
-                  <div className="relative bg-[#1a1a2e]/80 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-[#d4af37]/40 overflow-hidden">
-                    <div className="absolute top-0 right-0 w-48 h-48 bg-[#d4af37]/5 rounded-full blur-3xl" />
-                    <div className="relative">
-                      {/* Section header */}
-                      <div className="text-center mb-8">
-                        <div className="flex items-center justify-center gap-3 mb-3">
-                          <span className="text-[#d4af37] text-xl">✧</span>
-                          <h2 className="text-2xl md:text-3xl font-bold text-[#d4af37]">
-                            Lo Shu Grid Analysis
-                          </h2>
-                          <span className="text-[#d4af37] text-xl">✧</span>
-                        </div>
-                        <p className="text-[#c0c0d8]/60 text-sm tracking-wide">Ancient Indian Numerology System</p>
-                      </div>
-
-                      {/* Lo Shu Grid */}
-                      <div className="flex justify-center mb-8">
-                        <div className="inline-block bg-[#0a0a0f]/60 p-4 rounded-xl border border-[#d4af37]/40 glow-gold">
-                          {displayGrid.map((row, rowIndex) => (
-                            <div key={rowIndex} className="flex">
-                              {row.map((cell, colIndex) => (
-                                <div
-                                  key={colIndex}
-                                  className="border border-[#d4af37]/40 w-14 h-14 md:w-20 md:h-20 flex items-center justify-center text-[#d4af37] bg-[#12121a]/50 text-2xl md:text-3xl font-bold"
-
-                                >
-                                  {cell ?? ""}
-                                </div>
-                              ))}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
                   {/* Plane Qualities */}
                   {planes.map((plane, idx) => {
                     const colorMap: { [key: string]: { border: string; accent: string; glow: string } } = {
